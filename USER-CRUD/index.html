@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>User Profile</title>
+  </head>
+  <body>
+    <!-- Auth Info Section -->
+    <div class="auth-info">
+      <span id="userInfo">Welcome, User!</span>
+      <button class="logout-btn" onclick="logout()" id="logoutBtn">
+        Logout
+      </button>
+    </div>
+
+    <!-- Page Title -->
+    <h1>Your Profile</h1>
+
+    <!-- Profile Update Form -->
+    <div class="form-container">
+      <input type="hidden" id="userId" />
+      <input type="text" id="userName" placeholder="Enter name" required />
+      <input type="email" id="userEmail" placeholder="Enter email" required />
+      <button onclick="updateProfile()">Update Profile</button>
+    </div>
+
+    <!-- Current Profile Information -->
+    <div class="profile-info">
+      <p><strong>Name:</strong> <span id="profileName">Not set</span></p>
+      <p><strong>Email:</strong> <span id="profileEmail">Not set</span></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

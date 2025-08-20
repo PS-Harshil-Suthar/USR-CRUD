@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <!-- Auth Info Section -->
+    <div class="auth-info">
+      <span id="userInfo">Welcome, Admin!</span>
+      <button class="admin-btn" onclick="goToProfile()" id="profileBtn">
+        My Profile
+      </button>
+      <button class="logout-btn" onclick="logout()" id="logoutBtn">
+        Logout
+      </button>
+    </div>
+
+    <!-- Page Title -->
+    <h1>Admin Panel</h1>
+
+    <!-- User Management Form -->
+    <div class="form-container">
+      <input type="hidden" id="userId" />
+      <input type="text" id="userName" placeholder="Enter name" required />
+      <input type="email" id="userEmail" placeholder="Enter email" required />
+      <select id="userRole">
+        <option value="false">User</option>
+        <option value="true">Admin</option>
+      </select>
+      <button onclick="saveUser()" id="saveUserBtn">Save User</button>
+    </div>
+
+    <!-- Users Table -->
+    <table id="userTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody">
+        <!-- Dynamic content will be inserted here -->
+      </tbody>
+    </table>
+
+    <!-- Password Change Modal -->
+    <div id="passwordModal" class="modal">
+      <div class="modal-content">
+        <h2>Change Password</h2>
+        <input type="hidden" id="modalUserId" />
+        <input
+          type="password"
+          id="newPassword"
+          placeholder="Enter new password"
+          required
+        />
+        <button class="update-btn" onclick="changePassword()">Update Password</button>
+        <button class="close-btn" onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Sample JavaScript for table row generation -->
+    <script>
+      // Sample function to show how action buttons should be structured
+      function generateUserRow(user) {
+        return `
+          <tr>
+            <td>${user.name}</td>
+            <td>${user.email}</td>
+            <td>${user.isAdmin ? 'Admin' : 'User'}</td>
+            <td class="action-buttons">
+              <button class="edit-btn" onclick="editUser('${user.id}')">Edit</button>
+              <button class="delete-btn" onclick="deleteUser('${user.id}')">Delete</button>
+              <button class="password-btn" onclick="openPasswordModal('${user.id}')">Change Password</button>
+            </td>
+          </tr>
+        `;
+      }
+    </script>
+  </body>
+</html>
